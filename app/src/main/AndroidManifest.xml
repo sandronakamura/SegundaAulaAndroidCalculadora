@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.segundaaulaandroidcalculadora"
     android:versionCode="1"
-    android:versionName="1">
+    android:versionName="1.2">
 
     <application
         android:allowBackup="true"
