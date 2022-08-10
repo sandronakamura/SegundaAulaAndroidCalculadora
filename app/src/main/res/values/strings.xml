@@ -1,3 +1,13 @@
 <resources>
-    <string name="app_name">Calculadora Combustível</string>
+    <string name="app_name">Calculadora Pitágoras</string>
+    <string name="calculadora_pitagoras">Calculadora Pitágoras</string>
+    <string name="texto_imagem_triangulo">Icone triângulo com uma interrogação na hipotenusa</string>
+    <string name="primeiro_cateto">Primeiro Cateto</string>
+    <string name="segundo_cateto">Segundo Cateto</string>
+    <string name="nenhuma_opcao_escolhida">Nenhuma opção escolhida</string>
+    <string name="calcular">Calcular</string>
+    <string name="simplifique_seus_calculos">Simplifique os seus cálculos</string>
+    <string name="informe_seu_nome">Informe seu nome</string>
+    <string name="preencha_os_valores">Preencha os valores primeiro!</string>
+
 </resources>

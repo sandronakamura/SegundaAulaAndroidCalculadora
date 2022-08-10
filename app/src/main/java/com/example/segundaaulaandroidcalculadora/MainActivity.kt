@@ -6,6 +6,7 @@ import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlin.math.pow
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -14,46 +15,51 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    fun calcularPreco(view: View){
+    fun calcularPitagoras(view: View){
         // Atribui os valores dos edits texts para as variáveis
-        val precoAlcool = edtPrecoAlcool.text.toString()
-        var precoGasolina = edtPrecoGasolina.text.toString()
+        val nome = edtNome.text.toString()
+        val primeiroCateto = edtPrimeiroCateto.text.toString()
+        val segundoCateto = edtSegundoCateto.text.toString()
 
         // Variável recebe resuldado no formato Boolean da função validaCampos
-        val validaCampos = validarCampos(precoAlcool, precoGasolina)
+        val validaCampos = validarCampos(nome, primeiroCateto, segundoCateto)
 
-        // Verifica se o valor é true e chama a função calcularMelhorPreco senão altera o texto do textView resultado
+        // Verifica se o valor é true e chama a função calcularResultadoPitagoras senão altera o texto do textView resultado
         if (validaCampos){
-            calcularMelhorPreco(precoAlcool, precoGasolina)
+            calcularResultadoPitagoras(nome, primeiroCateto, segundoCateto)
         }else{
-            txtResultado.text = "Preencha os preços primeiro!"
+            txtResultado.text=resources.getString(R.string.preencha_os_valores)
         }
     }
 
-    fun calcularMelhorPreco(precoAlcool: String, precoGasolina: String){
+    fun calcularResultadoPitagoras(nome: String, primeiroCateto: String, segundoCateto: String){
         // Converte os valores recebidos para ponto flutuante
-        val valorAlcool = precoAlcool.toDouble()
-        val valorGasolina = precoGasolina.toDouble()
+        val valorPrimeiroCateto = primeiroCateto.toDouble()
+        val valorSegundoCateto = segundoCateto.toDouble()
 
-        // Realiza a divisão e salva em uma variável
-        val resultadoPreco = valorAlcool / valorGasolina
+        // Realiza soma dos quadrados dos catetos e depois a raiz do resultado
+        val somaCatetos=  valorPrimeiroCateto.pow(2) + valorSegundoCateto.pow(2)
+        val resultado = kotlin.math.sqrt(somaCatetos)
 
-        // Se o resultado for menor ou igual a 0.7 altera o texto do textView resultado para melhor usar gasolina senão altera para
-        // melhor utilizar alcool
-        if(resultadoPreco >= 0.7){
-            txtResultado.text = "Melhor utilizar Gasolina"
-        }else{
-            txtResultado.text = "Melhor utilizar Alcool"
-        }
+        val textViewResultado = findViewById<TextView>(R.id.txtResultado)
+
+        // Concatenando o nome do usuário e o resultado para ser exibido no textView
+        val resultadoString = "Ola $nome o resultado é: $resultado"
+        textViewResultado.text= resultadoString
+
+
     }
 
-    fun validarCampos(precoAlcool: String, precoGasolina: String): Boolean{
+
+    fun validarCampos(nome: String, primeiroCateto: String, segundoCateto: String): Boolean{
         // Cria variável booleana iniciada em true
         var camposValidados: Boolean = true
-        // Verifica se os valores do Alcool e Gasolina são nulos ou vazios
-        if(precoAlcool == null || precoAlcool.equals("")){
+        // Verifica se os valores nome, primeiroCateto e segundoCateto são nulos ou vazios
+        if(nome == ""){
             camposValidados = false
-        } else if (precoGasolina == null || precoGasolina.equals("")){
+        } else if (primeiroCateto == ""){
+            camposValidados = false
+        } else if (segundoCateto == ""){
             camposValidados = false
         }
         // Retorna true ou false
