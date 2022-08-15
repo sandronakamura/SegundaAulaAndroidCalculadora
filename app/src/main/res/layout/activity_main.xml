@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -50,7 +49,8 @@
         android:inputType="text"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        android:autofillHints="none" />
 
 
     <EditText
@@ -63,7 +63,8 @@
         android:textColorHint="@color/white"
         android:layout_marginTop="20dp"
         android:inputType="numberDecimal"
-        android:layout_below="@id/edtNome" />
+        android:layout_below="@id/edtNome"
+        android:autofillHints="none" />
 
     <EditText
         android:id="@+id/edtSegundoCateto"
@@ -75,7 +76,8 @@
         android:layout_marginTop="30dp"
         android:textColorHint="@color/white"
         android:inputType="numberDecimal"
-        android:layout_below="@id/edtPrimeiroCateto" />
+        android:layout_below="@id/edtPrimeiroCateto"
+        android:autofillHints="none" />
 
     <Button
         android:id="@+id/btnCalcular"

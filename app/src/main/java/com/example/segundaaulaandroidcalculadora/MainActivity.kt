@@ -3,7 +3,6 @@ package com.example.segundaaulaandroidcalculadora
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.Button
 import android.widget.TextView
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlin.math.pow
@@ -53,7 +52,7 @@ class MainActivity : AppCompatActivity() {
 
     fun validarCampos(nome: String, primeiroCateto: String, segundoCateto: String): Boolean{
         // Cria variável booleana iniciada em true
-        var camposValidados: Boolean = true
+        var camposValidados = true
         // Verifica se os valores nome, primeiroCateto e segundoCateto são nulos ou vazios
         if(nome == ""){
             camposValidados = false
