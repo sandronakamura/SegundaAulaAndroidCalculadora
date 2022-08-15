@@ -3,8 +3,6 @@ package com.example.segundaaulaandroidcalculadora
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.Button
-import android.widget.TextView
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -17,7 +15,7 @@ class MainActivity : AppCompatActivity() {
     fun calcularPreco(view: View){
         // Atribui os valores dos edits texts para as variáveis
         val precoAlcool = edtPrecoAlcool.text.toString()
-        var precoGasolina = edtPrecoGasolina.text.toString()
+        val precoGasolina = edtPrecoGasolina.text.toString()
 
         // Variável recebe resuldado no formato Boolean da função validaCampos
         val validaCampos = validarCampos(precoAlcool, precoGasolina)
@@ -26,7 +24,7 @@ class MainActivity : AppCompatActivity() {
         if (validaCampos){
             calcularMelhorPreco(precoAlcool, precoGasolina)
         }else{
-            txtResultado.text = "Preencha os preços primeiro!"
+            txtResultado.text = getString(R.string.preencha_precos_primeiro)
         }
     }
 
@@ -41,19 +39,19 @@ class MainActivity : AppCompatActivity() {
         // Se o resultado for menor ou igual a 0.7 altera o texto do textView resultado para melhor usar gasolina senão altera para
         // melhor utilizar alcool
         if(resultadoPreco >= 0.7){
-            txtResultado.text = "Melhor utilizar Gasolina"
+            txtResultado.text = getString(R.string.utilizar_gasolina)
         }else{
-            txtResultado.text = "Melhor utilizar Alcool"
+            txtResultado.text = getString(R.string.utilizar_alcool)
         }
     }
 
     fun validarCampos(precoAlcool: String, precoGasolina: String): Boolean{
         // Cria variável booleana iniciada em true
-        var camposValidados: Boolean = true
+        var camposValidados = true
         // Verifica se os valores do Alcool e Gasolina são nulos ou vazios
-        if(precoAlcool == null || precoAlcool.equals("")){
+        if(precoAlcool == ""){
             camposValidados = false
-        } else if (precoGasolina == null || precoGasolina.equals("")){
+        } else if (precoGasolina == ""){
             camposValidados = false
         }
         // Retorna true ou false
